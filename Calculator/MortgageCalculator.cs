@@ -6,8 +6,8 @@ namespace Calculator
 {
     public class MortgageCalculator
     {
-        private int MortgageAmount;
-        public int MyMortgageAmount
+        private double MortgageAmount;
+        public double MyMortgageAmount
         {
             get { return MortgageAmount; }
             set { MortgageAmount = value; }
@@ -25,7 +25,7 @@ namespace Calculator
             set { MortgagePeriod = value; }
         }
 
-        public double MortgagePaymentCalculator(int mortgageAmount, double interestRate, double mortgagePeriod)
+        public double MortgagePaymentCalculator(double mortgageAmount, double interestRate, double mortgagePeriod)
         {
             double MonthlyInterestRate = (interestRate/12);
             Console.WriteLine(MonthlyInterestRate);
