@@ -31,8 +31,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.TabSystem = new System.Windows.Forms.TabControl();
+            this.CalculatorTab = new System.Windows.Forms.TabPage();
             this.CalculateButton = new System.Windows.Forms.Button();
             this.MonthlyPaymentLabel = new System.Windows.Forms.Label();
             this.MonthMortPaymentBox = new System.Windows.Forms.TextBox();
@@ -42,9 +42,16 @@
             this.MortPeriodBox = new System.Windows.Forms.TextBox();
             this.InterestRateAmountBox = new System.Windows.Forms.TextBox();
             this.MortAmountBox = new System.Windows.Forms.TextBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.HistoryTab = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.MortgageAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InterestRateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MortgageTimeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MonthlyPaymentsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TabSystem.SuspendLayout();
+            this.CalculatorTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.HistoryTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -68,37 +75,38 @@
             this.textBox5.Size = new System.Drawing.Size(163, 23);
             this.textBox5.TabIndex = 0;
             // 
-            // tabControl1
+            // TabSystem
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.TabSystem.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(-2, 2);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(922, 769);
-            this.tabControl1.TabIndex = 0;
+            this.TabSystem.Controls.Add(this.CalculatorTab);
+            this.TabSystem.Controls.Add(this.HistoryTab);
+            this.TabSystem.Location = new System.Drawing.Point(-2, 2);
+            this.TabSystem.Name = "TabSystem";
+            this.TabSystem.SelectedIndex = 0;
+            this.TabSystem.Size = new System.Drawing.Size(922, 769);
+            this.TabSystem.TabIndex = 0;
+            this.TabSystem.SelectedIndexChanged += new System.EventHandler(this.TabSystem_SelectedIndexChanged);
             // 
-            // tabPage1
+            // CalculatorTab
             // 
-            this.tabPage1.Controls.Add(this.CalculateButton);
-            this.tabPage1.Controls.Add(this.MonthlyPaymentLabel);
-            this.tabPage1.Controls.Add(this.MonthMortPaymentBox);
-            this.tabPage1.Controls.Add(this.MortgagePeriodLabel);
-            this.tabPage1.Controls.Add(this.InterestRateLabel);
-            this.tabPage1.Controls.Add(this.MortgageAmountLabel);
-            this.tabPage1.Controls.Add(this.MortPeriodBox);
-            this.tabPage1.Controls.Add(this.InterestRateAmountBox);
-            this.tabPage1.Controls.Add(this.MortAmountBox);
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(914, 741);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.CalculatorTab.Controls.Add(this.CalculateButton);
+            this.CalculatorTab.Controls.Add(this.MonthlyPaymentLabel);
+            this.CalculatorTab.Controls.Add(this.MonthMortPaymentBox);
+            this.CalculatorTab.Controls.Add(this.MortgagePeriodLabel);
+            this.CalculatorTab.Controls.Add(this.InterestRateLabel);
+            this.CalculatorTab.Controls.Add(this.MortgageAmountLabel);
+            this.CalculatorTab.Controls.Add(this.MortPeriodBox);
+            this.CalculatorTab.Controls.Add(this.InterestRateAmountBox);
+            this.CalculatorTab.Controls.Add(this.MortAmountBox);
+            this.CalculatorTab.Location = new System.Drawing.Point(4, 24);
+            this.CalculatorTab.Name = "CalculatorTab";
+            this.CalculatorTab.Padding = new System.Windows.Forms.Padding(3);
+            this.CalculatorTab.Size = new System.Drawing.Size(914, 741);
+            this.CalculatorTab.TabIndex = 0;
+            this.CalculatorTab.Text = "Calculator";
+            this.CalculatorTab.UseVisualStyleBackColor = true;
             // 
             // CalculateButton
             // 
@@ -177,27 +185,75 @@
             this.MortAmountBox.Size = new System.Drawing.Size(234, 23);
             this.MortAmountBox.TabIndex = 0;
             // 
-            // tabPage2
+            // HistoryTab
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(914, 741);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MortgageAmountColumn,
+            this.InterestRateColumn,
+            this.MortgageTimeColumn,
+            this.MonthlyPaymentsColumn});
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(908, 735);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.Text = "dataGridView1";
+            this.HistoryTab.Controls.Add(this.dataGridView1);
+            this.HistoryTab.Location = new System.Drawing.Point(4, 24);
+            this.HistoryTab.Name = "HistoryTab";
+            this.HistoryTab.Padding = new System.Windows.Forms.Padding(3);
+            this.HistoryTab.Size = new System.Drawing.Size(914, 741);
+            this.HistoryTab.TabIndex = 1;
+            this.HistoryTab.Text = "History";
+            this.HistoryTab.UseVisualStyleBackColor = true;
+            // 
+            // MortgageAmountColumn
+            // 
+            this.MortgageAmountColumn.HeaderText = "MortgageAmount";
+            this.MortgageAmountColumn.Name = "MortgageAmountColumn";
+            this.MortgageAmountColumn.ReadOnly = true;
+            this.MortgageAmountColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.MortgageAmountColumn.Width = 200;
+            // 
+            // InterestRateColumn
+            // 
+            this.InterestRateColumn.HeaderText = "InterestRate";
+            this.InterestRateColumn.Name = "InterestRateColumn";
+            this.InterestRateColumn.ReadOnly = true;
+            this.InterestRateColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // MortgageTimeColumn
+            // 
+            this.MortgageTimeColumn.HeaderText = "MortgageTime (in years)";
+            this.MortgageTimeColumn.Name = "MortgageTimeColumn";
+            this.MortgageTimeColumn.ReadOnly = true;
+            this.MortgageTimeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // MonthlyPaymentsColumn
+            // 
+            this.MonthlyPaymentsColumn.HeaderText = "MonthlyPayments";
+            this.MonthlyPaymentsColumn.Name = "MonthlyPaymentsColumn";
+            this.MonthlyPaymentsColumn.ReadOnly = true;
+            this.MonthlyPaymentsColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.MonthlyPaymentsColumn.Width = 150;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(919, 771);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.TabSystem);
             this.Name = "Form1";
-            this.Text = "Form1";
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.Text = "Mortgage Payment Calculator";
+            this.TabSystem.ResumeLayout(false);
+            this.CalculatorTab.ResumeLayout(false);
+            this.CalculatorTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.HistoryTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -207,18 +263,23 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabControl TabSystem;
+        private System.Windows.Forms.TabPage CalculatorTab;
         private System.Windows.Forms.Label MortgagePeriodLabel;
         private System.Windows.Forms.Label InterestRateLabel;
         private System.Windows.Forms.Label MortgageAmountLabel;
         private System.Windows.Forms.TextBox MortPeriodBox;
         private System.Windows.Forms.TextBox InterestRateAmountBox;
         private System.Windows.Forms.TextBox MortAmountBox;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage HistoryTab;
         private System.Windows.Forms.Label MonthlyPaymentLabel;
         private System.Windows.Forms.TextBox MonthMortPaymentBox;
         private System.Windows.Forms.Button CalculateButton;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MortgageAmountColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InterestRateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MortgageTimeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MonthlyPaymentsColumn;
     }
 }
 
