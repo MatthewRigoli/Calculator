@@ -67,5 +67,10 @@ namespace MortgageCalc.WinForms
                 }
             }
         }
+
+        private void MortgageTrackBar_Scroll(object sender, EventArgs e)
+        {
+
+        }
     }
 }

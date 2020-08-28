@@ -48,10 +48,12 @@
             this.InterestRateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MortgageTimeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MonthlyPaymentsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MortgageTrackBar = new System.Windows.Forms.TrackBar();
             this.TabSystem.SuspendLayout();
             this.CalculatorTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.HistoryTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MortgageTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -91,6 +93,7 @@
             // 
             // CalculatorTab
             // 
+            this.CalculatorTab.Controls.Add(this.MortgageTrackBar);
             this.CalculatorTab.Controls.Add(this.CalculateButton);
             this.CalculatorTab.Controls.Add(this.MonthlyPaymentLabel);
             this.CalculatorTab.Controls.Add(this.MonthMortPaymentBox);
@@ -187,6 +190,14 @@
             // 
             // HistoryTab
             // 
+            this.HistoryTab.Controls.Add(this.dataGridView1);
+            this.HistoryTab.Location = new System.Drawing.Point(4, 24);
+            this.HistoryTab.Name = "HistoryTab";
+            this.HistoryTab.Padding = new System.Windows.Forms.Padding(3);
+            this.HistoryTab.Size = new System.Drawing.Size(914, 741);
+            this.HistoryTab.TabIndex = 1;
+            this.HistoryTab.Text = "History";
+            this.HistoryTab.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -202,14 +213,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(908, 735);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.Text = "dataGridView1";
-            this.HistoryTab.Controls.Add(this.dataGridView1);
-            this.HistoryTab.Location = new System.Drawing.Point(4, 24);
-            this.HistoryTab.Name = "HistoryTab";
-            this.HistoryTab.Padding = new System.Windows.Forms.Padding(3);
-            this.HistoryTab.Size = new System.Drawing.Size(914, 741);
-            this.HistoryTab.TabIndex = 1;
-            this.HistoryTab.Text = "History";
-            this.HistoryTab.UseVisualStyleBackColor = true;
             // 
             // MortgageAmountColumn
             // 
@@ -241,6 +244,17 @@
             this.MonthlyPaymentsColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.MonthlyPaymentsColumn.Width = 150;
             // 
+            // MortgageTrackBar
+            // 
+            this.MortgageTrackBar.Location = new System.Drawing.Point(623, 368);
+            this.MortgageTrackBar.Maximum = 1000000;
+            this.MortgageTrackBar.Minimum = 10000;
+            this.MortgageTrackBar.Name = "MortgageTrackBar";
+            this.MortgageTrackBar.Size = new System.Drawing.Size(104, 45);
+            this.MortgageTrackBar.TabIndex = 6;
+            this.MortgageTrackBar.Value = 100000;
+            this.MortgageTrackBar.Scroll += new System.EventHandler(this.MortgageTrackBar_Scroll);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -252,8 +266,9 @@
             this.TabSystem.ResumeLayout(false);
             this.CalculatorTab.ResumeLayout(false);
             this.CalculatorTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.HistoryTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MortgageTrackBar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -280,6 +295,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn InterestRateColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn MortgageTimeColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn MonthlyPaymentsColumn;
+        private System.Windows.Forms.TrackBar MortgageTrackBar;
     }
 }
 
