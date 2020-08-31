@@ -113,7 +113,7 @@
             this.CalculateButton.Location = new System.Drawing.Point(10, 152);
             this.CalculateButton.Name = "CalculateButton";
             this.CalculateButton.Size = new System.Drawing.Size(75, 23);
-            this.CalculateButton.TabIndex = 5;
+            this.CalculateButton.TabIndex = 3;
             this.CalculateButton.Text = "Calculate";
             this.CalculateButton.UseVisualStyleBackColor = true;
             this.CalculateButton.Click += new System.EventHandler(this.CalculateButton_Click);
@@ -169,14 +169,14 @@
             this.MortPeriodBox.Location = new System.Drawing.Point(623, 88);
             this.MortPeriodBox.Name = "MortPeriodBox";
             this.MortPeriodBox.Size = new System.Drawing.Size(234, 23);
-            this.MortPeriodBox.TabIndex = 0;
+            this.MortPeriodBox.TabIndex = 2;
             // 
             // InterestRateAmountBox
             // 
             this.InterestRateAmountBox.Location = new System.Drawing.Point(322, 88);
             this.InterestRateAmountBox.Name = "InterestRateAmountBox";
             this.InterestRateAmountBox.Size = new System.Drawing.Size(234, 23);
-            this.InterestRateAmountBox.TabIndex = 0;
+            this.InterestRateAmountBox.TabIndex = 1;
             // 
             // MortAmountBox
             // 
