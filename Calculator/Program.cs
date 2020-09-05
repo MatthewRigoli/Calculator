@@ -12,8 +12,9 @@ namespace Calculator
             calc.MyInterestRate = 0.0392;
             calc.MyMortgageAmount = 100000;
             calc.MyMortgagePeriod = 30;
+            calc.MortgagePaymentCalculator();
 
-            Console.WriteLine(calc.MortgagePaymentCalculator(calc.MyMortgageAmount, calc.MyInterestRate, calc.MyMortgagePeriod));
+            Console.WriteLine(calc.MonthlyPaymentAmount);
         }
     }
 }

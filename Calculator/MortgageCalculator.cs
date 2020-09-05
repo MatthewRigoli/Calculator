@@ -4,40 +4,35 @@ using System.Text;
 
 namespace Calculator
 {
-    public class MortgageCalculator
+    public class MortgageCalculator : ICloneable
     {
-        private double MortgageAmount;
-        public double MyMortgageAmount
+        public double MyMortgageAmount { get; set; }
+        public double MyInterestRate { get; set; }
+        public double MyMortgagePeriod { get; set; }
+        public double MonthlyPaymentAmount { get; set; }
+        
+        public void MortgagePaymentCalculator()
         {
-            get { return MortgageAmount; }
-            set { MortgageAmount = value; }
-        }
-        private double InterestRate;
-        public double MyInterestRate
-        {
-            get { return InterestRate; }
-            set { InterestRate = value; }
-        }
-        private double MortgagePeriod;
-        public double MyMortgagePeriod
-        {
-            get { return MortgagePeriod; }
-            set { MortgagePeriod = value; }
-        }
-
-        public double MortgagePaymentCalculator(double mortgageAmount, double interestRate, double mortgagePeriod)
-        {
-            double MonthlyInterestRate = (interestRate/12);
+            double MonthlyInterestRate = (this.MyInterestRate/12);
             Console.WriteLine(MonthlyInterestRate);
-            double numMonthlyPayments = (mortgagePeriod*12);
+            double numMonthlyPayments = (this.MyMortgagePeriod*12);
 
-            double firstHalf = mortgageAmount*(MonthlyInterestRate*Math.Pow(MonthlyInterestRate+1, numMonthlyPayments));
+            double firstHalf = this.MyMortgageAmount*(MonthlyInterestRate*Math.Pow(MonthlyInterestRate+1, numMonthlyPayments));
             double secondHalf = Math.Pow(MonthlyInterestRate+1, numMonthlyPayments)-1;
 
-            double MonthlyPayment = firstHalf/secondHalf;
+            MonthlyPaymentAmount = firstHalf/secondHalf;
 
+        }
 
-            return MonthlyPayment;
+        public object Clone()
+        {
+            return new MortgageCalculator
+            {
+                MyMortgageAmount = MyMortgageAmount,
+                MyInterestRate = MyInterestRate,
+                MyMortgagePeriod = MyMortgagePeriod,
+                MonthlyPaymentAmount = MonthlyPaymentAmount
+            };
         }
 
     }

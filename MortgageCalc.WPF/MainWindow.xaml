@@ -1,0 +1,76 @@
+﻿<Window x:Class="MortgageCalc.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MortgageCalc.WPF"
+        mc:Ignorable="d"
+        Title="Mortgage Calculator" Height="450" Width="800">
+    <TabControl>
+        <TabItem Header="Calculator">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Mortgage Amount"
+                           VerticalAlignment="Center"
+                           Grid.Row="1"/>
+                <TextBox Grid.Row="1"
+                         Margin="5,5,482,5"
+                         Text="{Binding Calculator.MyMortgageAmount}"
+                         Grid.Column="1" RenderTransformOrigin="1.125,2.263"/>
+                <TextBlock Text="Interest Rate"
+                           VerticalAlignment="Center"
+                           Grid.Row="2"/>
+                <TextBox Grid.Row="2"
+                         Margin="5,5,482,5"
+                         Text="{Binding Calculator.MyInterestRate}"
+                         Grid.Column="1"/>
+                <TextBlock Text="Mortgage Period"
+                           VerticalAlignment="Center"
+                           Grid.Row="3"/>
+                <TextBox Grid.Row="3"
+                         Margin="5,5,482,5"
+                         Text="{Binding Calculator.MyMortgagePeriod}"
+                         Grid.Column="1"/>
+                <TextBlock Text="Monthly Payments"
+                           VerticalAlignment="Center"
+                           Grid.Row="4" RenderTransformOrigin="4.515,1.562" Margin="366,10,222,52" Grid.Column="1"/>
+                <TextBox Grid.Row="4"
+                         Margin="321,35,166,22"
+                         Text="{Binding Calculator.MonthlyPaymentAmount, Mode=OneWay, StringFormat=c}"
+                         Grid.Column="1"
+                         IsReadOnly="True" RenderTransformOrigin="1.265,7.579"/>
+                <Button Content="Calculate" 
+                        Grid.Column="1" 
+                        HorizontalAlignment="Left" 
+                        Margin="5,10,0,-21" Grid.Row="4" 
+                        VerticalAlignment="Top" 
+                        Width="200" 
+                        Height="46"
+                        Command="{Binding CalculateCommand}"/>
+                <Button Content="Import Excel File" Grid.Column="1" HorizontalAlignment="Left" Margin="226,184,0,-131" Grid.Row="4" VerticalAlignment="Top" Width="155" Height="27"/>
+                <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="21" Margin="226,149,0,-91" Grid.Row="4" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="155"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="History">
+            <DataGrid ItemsSource="{Binding History}" AutoGenerateColumns="False" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Mortgage Amount" Binding="{Binding MyMortgageAmount, StringFormat=c}"/>
+                    <DataGridTextColumn Header="Interest Rate" Binding="{Binding MyInterestRate}"/>
+                    <DataGridTextColumn Header="Mortgage Period" Binding="{Binding MyMortgagePeriod}"/>
+                    <DataGridTextColumn Header="Monthly Payment" Binding="{Binding MonthlyPaymentAmount, StringFormat=c}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </TabItem>
+    </TabControl>
+
+</Window>
