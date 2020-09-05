@@ -35,5 +35,34 @@ namespace Calculator
             };
         }
 
+        public string this[string columnName]
+        {
+            get
+            {
+                switch(columnName)
+                {
+                    case nameof(MyMortgageAmount):
+                        if (MyMortgageAmount > 5000000)
+                            return "Mortgage amount cannot exceed $5,000,000";
+                        else if (MyMortgageAmount <= 0)
+                            return "Mortgage amount cannot be less than or equal to $0.00";
+                        break;
+                    case nameof(MyInterestRate):
+                        if (MyInterestRate > 1)
+                            return "Interest rate cannot exceed 100%";
+                        else if (MyInterestRate <= 0)
+                            return "Interest rate cannot be less than or equal to 0%";
+                        break;
+                    case nameof(MyMortgagePeriod):
+                        if(MyMortgagePeriod > 65)
+                                return "Mortgage period cannot be longer than 65 years";
+                        else if(MyMortgagePeriod<= 0)
+                                return "Mortgage period cannot be less than or equal to 0 years";
+                        break;
+                }
+                return string.Empty;
+            }
+        }
+
     }
 }

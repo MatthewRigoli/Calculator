@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,10 +21,23 @@ namespace MortgageCalc.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainWindowViewModel vm;
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel();
+            DataContext = vm = new MainWindowViewModel(new RealFileProvider());
+        }
+
+        private void btnBrowse_Click(object sender, RoutedEventArgs e)
+        {
+            var openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx";
+            openFileDialog.Title = "Locate your Excel Input File";
+            openFileDialog.Multiselect = false;
+            if(openFileDialog.ShowDialog() ?? false)
+            {
+                vm.ImportFilePath = openFileDialog.FileName;
+            }
         }
     }
 }

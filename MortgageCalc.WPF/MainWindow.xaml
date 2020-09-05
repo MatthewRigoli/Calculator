@@ -6,6 +6,19 @@
         xmlns:local="clr-namespace:MortgageCalc.WPF"
         mc:Ignorable="d"
         Title="Mortgage Calculator" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError"
+                         Value="True">
+                    <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}">
+
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <TabControl>
         <TabItem Header="Calculator">
             <Grid>
@@ -17,48 +30,83 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="86.609"/>
+                    <ColumnDefinition Width="11.995"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Mortgage Amount"
                            VerticalAlignment="Center"
-                           Grid.Row="1"/>
+                           Grid.Row="1" Grid.ColumnSpan="3" Margin="0,0,695,0"/>
                 <TextBox Grid.Row="1"
                          Margin="5,5,482,5"
                          Text="{Binding Calculator.MyMortgageAmount}"
-                         Grid.Column="1" RenderTransformOrigin="1.125,2.263"/>
+                         Grid.Column="2" RenderTransformOrigin="1.125,2.263"/>
                 <TextBlock Text="Interest Rate"
                            VerticalAlignment="Center"
-                           Grid.Row="2"/>
+                           Grid.Row="2" Grid.ColumnSpan="3" Margin="0,0,695,0"/>
                 <TextBox Grid.Row="2"
                          Margin="5,5,482,5"
                          Text="{Binding Calculator.MyInterestRate}"
-                         Grid.Column="1"/>
+                         Grid.Column="2"/>
                 <TextBlock Text="Mortgage Period"
                            VerticalAlignment="Center"
-                           Grid.Row="3"/>
+                           Grid.Row="3" Grid.ColumnSpan="3" Margin="0,0,695,0"/>
                 <TextBox Grid.Row="3"
                          Margin="5,5,482,5"
                          Text="{Binding Calculator.MyMortgagePeriod}"
-                         Grid.Column="1"/>
+                         Grid.Column="2"/>
                 <TextBlock Text="Monthly Payments"
-                           VerticalAlignment="Center"
-                           Grid.Row="4" RenderTransformOrigin="4.515,1.562" Margin="366,10,222,52" Grid.Column="1"/>
+                           VerticalAlignment="Top"
+                           Grid.Row="4" RenderTransformOrigin="4.515,1.562" Margin="324,10,264,0" Grid.Column="2"/>
                 <TextBox Grid.Row="4"
-                         Margin="321,35,166,22"
+                         Margin="274,33,213,206"
                          Text="{Binding Calculator.MonthlyPaymentAmount, Mode=OneWay, StringFormat=c}"
-                         Grid.Column="1"
+                         Grid.Column="2"
                          IsReadOnly="True" RenderTransformOrigin="1.265,7.579"/>
                 <Button Content="Calculate" 
-                        Grid.Column="1" 
+                        Grid.Column="2" 
                         HorizontalAlignment="Left" 
-                        Margin="5,10,0,-21" Grid.Row="4" 
+                        Margin="5,10,0,0" Grid.Row="4" 
                         VerticalAlignment="Top" 
                         Width="200" 
                         Height="46"
                         Command="{Binding CalculateCommand}"/>
-                <Button Content="Import Excel File" Grid.Column="1" HorizontalAlignment="Left" Margin="226,184,0,-131" Grid.Row="4" VerticalAlignment="Top" Width="155" Height="27"/>
-                <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="21" Margin="226,149,0,-91" Grid.Row="4" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="155"/>
+                <Button Content="Import Excel File" 
+                        Grid.Column="2" 
+                        HorizontalAlignment="Left" 
+                        Margin="226,184,0,0" 
+                        Grid.Row="4" 
+                        VerticalAlignment="Top" 
+                        Width="96" 
+                        Height="27"
+                        Command="{Binding ImportFromExcel}"/>
+                <TextBox Grid.Column="2" 
+                         HorizontalAlignment="Left" 
+                         Height="21" 
+                         Margin="226,149,0,0" 
+                         Grid.Row="4" 
+                         TextWrapping="Wrap" 
+                         VerticalAlignment="Top" 
+                         Width="155"
+                         Text="{Binding ImportFilePath}"/>
+                <Button Content=". . . " 
+                        Grid.Column="2"
+                        HorizontalAlignment="Left" 
+                        Margin="341,184,0,0" 
+                        Grid.Row="4" 
+                        VerticalAlignment="Top" 
+                        RenderTransformOrigin="0.142,0.159" 
+                        Height="27" Width="40"
+                        Click="btnBrowse_Click"/>
+                <Button Content="Export to Excel" 
+                        Grid.Column="2" 
+                        HorizontalAlignment="Left" 
+                        Margin="226,235,0,0" 
+                        Grid.Row="4" 
+                        VerticalAlignment="Top" 
+                        Width="155" 
+                        Height="27"
+                        Command="{Binding ExportToExcel}"/>
             </Grid>
         </TabItem>
         <TabItem Header="History">
