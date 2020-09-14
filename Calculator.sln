@@ -9,7 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculatorTest", "Calculato
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MortgageCalc.WinForms", "MortgageCalc.WinForms\MortgageCalc.WinForms.csproj", "{19AD9A24-DB4B-4F4E-808F-CAD42CAEA8A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MortgageCalc.WPF", "MortgageCalc.WPF\MortgageCalc.WPF.csproj", "{C2BF583F-9A80-49E7-BF9C-74055D631F1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MortgageCalc.WPF", "MortgageCalc.WPF\MortgageCalc.WPF.csproj", "{C2BF583F-9A80-49E7-BF9C-74055D631F1B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2CE90432-A7D8-4985-8017-361BD7F55098} = {2CE90432-A7D8-4985-8017-361BD7F55098}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.Blazor", "Calculator.Blazor\Calculator.Blazor.csproj", "{848211F3-8688-4AB6-B012-FA9A927072BD}"
 	ProjectSection(ProjectDependencies) = postProject
 		{2CE90432-A7D8-4985-8017-361BD7F55098} = {2CE90432-A7D8-4985-8017-361BD7F55098}
 	EndProjectSection
@@ -36,6 +41,10 @@ Global
 		{C2BF583F-9A80-49E7-BF9C-74055D631F1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2BF583F-9A80-49E7-BF9C-74055D631F1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2BF583F-9A80-49E7-BF9C-74055D631F1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{848211F3-8688-4AB6-B012-FA9A927072BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{848211F3-8688-4AB6-B012-FA9A927072BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{848211F3-8688-4AB6-B012-FA9A927072BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{848211F3-8688-4AB6-B012-FA9A927072BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
