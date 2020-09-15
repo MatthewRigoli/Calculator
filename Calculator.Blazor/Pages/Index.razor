@@ -1,7 +1,38 @@
 ﻿@page "/"
+@using Calculator
 
-<h1>Hello, world!</h1>
 
-Welcome to your new app.
+<h1>Mortgage Calculator</h1>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+Loan Amount
+<input type="number" @bind="loanAmount" />
+<br />
+Interest Rate
+<input type="number" @bind="interestRate" />
+<br />
+Mortgage Period
+<input type="number" @bind="mortgagePeriod" />
+<br />
+
+<button @onclick="calculate">Calculate Monthly Payment</button>
+<br /><br />
+
+<span>Monthly Payment: @monthlyPayment.ToString("c")</span>
+
+@code {
+    private double loanAmount;
+    private double interestRate;
+    private double mortgagePeriod;
+    private double monthlyPayment;
+
+    private void calculate()
+    {
+        var calculator = new MortgageCalculator();
+        calculator.MyMortgageAmount = loanAmount;
+        calculator.MyInterestRate = interestRate;
+        calculator.MyMortgagePeriod = mortgagePeriod;
+        calculator.MortgagePaymentCalculator();
+        monthlyPayment = calculator.MonthlyPaymentAmount;
+    }
+}
+
